@@ -3,7 +3,7 @@ const jestOpenAPI = require('jest-openapi').default
 
 const swaggerDocument = require('../swagger.json');
 jestOpenAPI(swaggerDocument);
-
+jest.setTimeout(20000);
 describe('GET api/node/blocks', () => {
     it('should satisfy OpenAPI spec', async() => {
         const res = await axios.get('http://0.0.0.0:8080/api/node/blocks');

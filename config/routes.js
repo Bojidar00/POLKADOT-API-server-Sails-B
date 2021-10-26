@@ -23,6 +23,15 @@ module.exports.routes = {
   '/api/node/blocks': { action: 'last-block' },
   '/api/node/blocks/num/:num': { action: 'block-hash-by-number' },
   'POST /api/node/blocks/hash': { action: 'block-by-hash' },
+  '/api/node/blocks/:x/:n': { action: 'x-blocks-after-n' },
+  '/api/node/accounts/count/': { action: 'accounts-count' },
+  '/api/node/address/transactions/count/:address': { action: 'account-transactions-count' },
+  '/api/node/address/transactions/:address': { action: 'account-transactions' },
+  '/api/node/address/balance/:address': { action: 'account-balance' },
+  '/api/node/transactions/count': { action: 'transactions-count' },
+  'POST /api/node/transactions/block': { action: 'transactions-from-block' },
+  'POST /api/node/transactions/hash': { action: 'transaction-by-hash' },
+  '/api/node/transactions/:x/:n': { action: 'x-transactions-after-nth' },
 
 
   /***************************************************************************

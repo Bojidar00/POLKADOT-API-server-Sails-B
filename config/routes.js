@@ -21,6 +21,7 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   '/api/node/blocks': { action: 'last-block' },
+  '/api/node/blocks/num/:num': { action: 'block-hash-by-number' },
 
 
   /***************************************************************************

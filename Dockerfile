@@ -12,4 +12,6 @@ COPY . .
 
 RUN npm install
 
+RUN npm install sails -g
+
 CMD [ "sails", "lift" ]

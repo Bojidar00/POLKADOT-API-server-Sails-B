@@ -49,6 +49,6 @@ try {
   return;
 }//-•
 
-
+require('./websockets');
 // Start server
 sails.lift(rc('sails'));

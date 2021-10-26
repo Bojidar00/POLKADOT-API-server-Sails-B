@@ -1,8 +1,7 @@
-const dbConnection = require('../../dbConnection');
-const connectDb = dbConnection.getDbConnection().then((db) => {
-  db.connect().then(console.log("Connected to PostgreSQL from Server"));
-  return db;
-}); 
+const apiConnection = require('../../nodeConnection');
+const connectApi = apiConnection.getNodeConnection().then((api) => {
+  return api;
+});
 
 module.exports = {
 

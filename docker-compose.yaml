@@ -1,0 +1,49 @@
+version: '3.0'
+services: 
+   nodejs-server: 
+       build:
+         context: ./
+       ports:
+         - 8080:8080
+         - 8000:8000
+       depends_on:
+         db-PostgreSQL:
+           condition: service_healthy
+
+
+   polkadot-node: 
+    image: parity/polkadot
+    container_name: polkadot-node-container-sails
+    ports: 
+      - 30333:30333 # p2p port
+      - 9933:9933 # rpc port
+      - 9944:9944 # ws port
+    volumes:
+      - nodedata:/data
+    
+    command: [
+      "--rpc-methods", "Unsafe",
+      "--base-path", "data",
+      "--name", "PolkaNodeQuanterall",
+      "--rpc-cors", "all",
+      "--ws-external",
+      "--rpc-external",
+      "--pruning","archive"
+    ]
+
+   db-PostgreSQL:
+     image: postgres:12-alpine
+     container_name: postgreSql-container-sails
+     environment:
+      - POSTGRES_DB=polkadot_explorer
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+     
+     healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  nodedata:

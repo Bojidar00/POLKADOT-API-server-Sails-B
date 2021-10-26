@@ -2,6 +2,8 @@
 
 FROM node:14.0.0
 
+ENV NODE_ENV=production
+
 COPY ["package.json", "package-lock.json*", "./"]
 
 WORKDIR /POLKADOT-API-server-Sails-B

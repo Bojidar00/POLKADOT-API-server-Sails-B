@@ -24,9 +24,12 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+     try{
     result = await connectDb.query(`SELECT COUNT(*) AS count FROM transactions`);
             return  result?.rows;
+          } catch (error) {
+            return"Some error occurred!";
+        }
 
   }
 

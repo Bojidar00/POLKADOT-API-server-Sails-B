@@ -35,7 +35,7 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    try{
     const x = inputs.x;
     const n = inputs.n;
         
@@ -51,6 +51,9 @@ module.exports = {
         
                 return blocks;
             })
+          } catch (error) {
+            return"Some error occurred!";
+        }
 
   }
 

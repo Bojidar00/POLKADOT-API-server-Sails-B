@@ -28,8 +28,11 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    try{
     return connectApi.then(api => api.rpc.chain.getBlockHash(inputs.num));
+  } catch (error) {
+    return"Some error occurred!";
+}
 
   }
 

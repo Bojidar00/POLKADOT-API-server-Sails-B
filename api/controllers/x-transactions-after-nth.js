@@ -37,12 +37,15 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    try{
     const x = inputs.x;
     const n = inputs.n;
     
     const result = await connectDb.query(`SELECT * FROM transactions WHERE id < ${n} AND id > ${n} - ${x} LIMIT ${x}`);
     return result?.rows;
+  } catch (error) {
+    return"Some error occurred!";
+}
 
   }
 

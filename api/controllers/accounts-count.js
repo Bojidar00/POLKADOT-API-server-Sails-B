@@ -23,9 +23,12 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    try{
     const result = await connectDb.query(`SELECT COUNT(DISTINCT recipient)+COUNT(DISTINCT sender) AS count FROM transactions`);
     return result?.rows;
+  } catch (error) {
+    return"Some error occurred!";
+}
   }
 
 

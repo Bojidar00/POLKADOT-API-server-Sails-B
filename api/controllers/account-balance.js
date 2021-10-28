@@ -29,11 +29,14 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    try{
     const address = inputs.address;
 
             
             return connectApi.then(api => api.query.system.account(address));
+          } catch (error) {
+            return"Some error occurred!";
+        }
 
   }
 

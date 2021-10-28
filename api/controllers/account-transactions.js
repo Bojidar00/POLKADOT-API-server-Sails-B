@@ -30,12 +30,15 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    try{
     const address = inputs.address;
 
             
             const result = await connectDb.query(`SELECT * FROM transactions WHERE recipient='${address}' OR sender='${address}'`);
             return result?.rows;
+          } catch (error) {
+            return"Some error occurred!";
+        }
 
   }
 

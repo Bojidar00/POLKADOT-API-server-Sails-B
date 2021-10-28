@@ -31,12 +31,15 @@ module.exports = {
 
 
   fn: async function (inputs) {
-
+    try{
     const hash = inputs.hash;
 
             
             const result = await connectDb.query(`SELECT * FROM transactions WHERE block_hash='${hash}'`);
             return result?.rows;
+          } catch (error) {
+            return"Some error occurred!";
+        }
 
   }
 
